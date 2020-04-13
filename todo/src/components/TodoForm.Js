@@ -6,7 +6,7 @@ const TodoForm = props =>{
 
     const taskSubmit = event =>{
         event.preventDefault();
-        state
+        dispatch({type:"ADD_TASK"})
     }
 
     return(
@@ -16,8 +16,8 @@ const TodoForm = props =>{
             naem="taskInput"
             onChange={props.inputChange}
             />
-            <button onClick={taskSubmit}>Add ToDo</button>
-            <button onClick ={dispatch({type:"CLEAR_COMPLETED"})}>Clear Completed</button>
+            <button onClick={() => {taskSubmit()}}>Add ToDo</button>
+            <button onClick ={() => {dispatch({type:"CLEAR_COMPLETED"})}}>Clear Completed</button>
         </form>
     )
 }

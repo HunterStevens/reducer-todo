@@ -8,11 +8,11 @@ const TodoList = () =>{
 
     return(
         <div>
-            {state.map(item=>{
+            {state.map(todo=>{
                 return(
                 <div onClick ={() => dispatch({type:'COMPLETE_TASK'})}
-                    className={`task${item.completed ? 'completed' : ''}`}>
-                        <p>{item.item}</p>
+                    className={`task${todo.completed ? 'completed' : ''}`}>
+                        <p>{todo.item}</p>
                 </div>
                 )
             })}
