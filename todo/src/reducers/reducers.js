@@ -1,20 +1,20 @@
-import React from "react"; 
-
-export const initialList = [
+export const initialList = {
+    todos:[
     {
         item: 'learn about reducers',
         completed: false,
-        id: Date.now()
+        id: Date.now(),
     }
-]
+    ]
+}
 
-export function TodoReducers(initialList, action){
+export function TodoReducers(state = initialList, action){
     switch(action.type){
         case"ADD_TASK":
-            console.log("ADD_TASK Reducer", action.payload)
+            console.log("ADD_TASK Reducer", action.payload, state)
             return{
-                ...initialList,
-                item:action.payload
+                ...state,
+                todos:[...state.todos, action.payload]
             }
 
         case"CLEAR_COMPLETED":
@@ -27,6 +27,6 @@ export function TodoReducers(initialList, action){
             }
 
         default:
-        return initialList;
+        return state;
     }
 }

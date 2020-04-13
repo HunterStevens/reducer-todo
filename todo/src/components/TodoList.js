@@ -1,5 +1,6 @@
 import React, {useReducer} from 'react';
 import { TodoReducers, initialList } from '../reducers/reducers';
+import TodoForm from './TodoForm';
 
 
 
@@ -8,7 +9,7 @@ const TodoList = () =>{
 
     return(
         <div>
-            {state.map(todo=>{
+            {state.todos.map(todo=>{
                 return(
                 <div key={todo.id} onClick ={() => dispatch({type:'COMPLETE_TASK'})}
                     className={`task${todo.completed ? 'completed' : ''}`}>
@@ -17,6 +18,7 @@ const TodoList = () =>{
                 )
             })}
         </div>
+        
     );
 }
 

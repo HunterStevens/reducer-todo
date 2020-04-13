@@ -1,12 +1,14 @@
 import React, {useReducer, useState} from 'react';
 import { TodoReducers, initialList } from '../reducers/reducers';
+import TodoList from './TodoList';
 
 
 const TodoForm = () =>{
     const [state, dispatch] = useReducer(TodoReducers, initialList);
-    const [taskInput, setTaskInput] = useState("");
+    const [taskInput, setTaskInput] = useState();
 
     const taskSubmit = event =>{
+        event.preventDefault();
         console.log("add button triggered")
         const newTask = {
             item:taskInput,
@@ -29,15 +31,27 @@ const TodoForm = () =>{
     }
 
     return(
+        <div>
         <form>
             <input type="text"
-            value={taskInput.item}
+            value={taskInput}
             name="item"
             onChange={inputChange}
             />
-            <button onClick={() => {taskSubmit()}}>Add ToDo</button>
+            <button onClick={event => {taskSubmit(event)}}>Add ToDo</button>
             <button onClick ={() => {clearCompleted()}}>Clear Completed</button>
         </form>
+        <div>
+            {state.todos.map(todo=>{
+                return(
+                <div key={todo.id} onClick ={() => dispatch({type:'COMPLETE_TASK'})}
+                    className={`task${todo.completed ? 'completed' : ''}`}>
+                        <p>{todo.item}</p>
+                </div>
+                )
+            })}
+        </div>
+        </div>
     )
 }
 export default TodoForm;
