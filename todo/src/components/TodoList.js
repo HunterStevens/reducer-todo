@@ -10,7 +10,7 @@ const TodoList = () =>{
         <div>
             {state.map(todo=>{
                 return(
-                <div onClick ={() => dispatch({type:'COMPLETE_TASK'})}
+                <div key={todo.id} onClick ={() => dispatch({type:'COMPLETE_TASK'})}
                     className={`task${todo.completed ? 'completed' : ''}`}>
                         <p>{todo.item}</p>
                 </div>
