@@ -4,6 +4,11 @@ import { TodoReducers, initialList } from '../reducers/reducers';
 const TodoForm = props =>{
     const [state, dispatch] = useReducer(TodoReducers, initialList);
 
+    const taskSubmit = event =>{
+        event.preventDefault();
+        state
+    }
+
     return(
         <form>
             <input type="text"
@@ -11,7 +16,7 @@ const TodoForm = props =>{
             naem="taskInput"
             onChange={props.inputChange}
             />
-            <button onClick={dispatch({type:"ADD_TASK"})}>Add ToDo</button>
+            <button onClick={taskSubmit}>Add ToDo</button>
             <button onClick ={dispatch({type:"CLEAR_COMPLETED"})}>Clear Completed</button>
         </form>
     )

@@ -8,11 +8,11 @@ export const initialList = [
     }
 ]
 
-export const TodoReducers = (state = inititalState, action) => {
+export function TodoReducers(initialList, action){
     switch(action.type){
         
 
         default:
-        return state;
+        return initialList;
     }
 }
