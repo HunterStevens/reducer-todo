@@ -28,6 +28,7 @@ const TodoForm = () =>{
     }
 
     const clearCompleted = event =>{
+        event.preventDefault();
         dispatch({type:"CLEAR_COMPLETED"});
     }
 
@@ -45,7 +46,7 @@ const TodoForm = () =>{
             onChange={inputChange}
             />
             <button onClick={event => {taskSubmit(event)}}>Add ToDo</button>
-            <button onClick ={() => {clearCompleted()}}>Clear Completed</button>
+            <button onClick ={event => {clearCompleted(event)}}>Clear Completed</button>
         </form>
         <div>
             {state.todos.map(todo=>{

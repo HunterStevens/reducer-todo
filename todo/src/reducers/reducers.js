@@ -19,7 +19,8 @@ export function TodoReducers(state = initialList, action){
 
         case"CLEAR_COMPLETED":
             return{
-
+                ...state,
+                todos:state.todos.filter(item => !item.completed)
             }
         case"COMPLETE_TASK":
             return{
