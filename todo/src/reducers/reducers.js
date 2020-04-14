@@ -23,7 +23,20 @@ export function TodoReducers(state = initialList, action){
             }
         case"COMPLETE_TASK":
             return{
-
+                ...state,
+                todos:state.todos.map(item =>{
+                    if(action.payload == item.id){
+                        return{
+                            ...item,
+                            completed:!item.completed
+                        }
+                    }
+                    else{
+                        return {
+                            ...item
+                        }
+                    }
+                })
             }
 
         default:

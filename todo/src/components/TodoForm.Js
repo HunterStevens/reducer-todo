@@ -13,12 +13,18 @@ const TodoForm = () =>{
         const newTask = {
             item:taskInput,
             id:Date.now(),
-            complete:false
+            completed:false
         }
 
         dispatch({type:"ADD_TASK", payload:newTask});
         setTaskInput('');
 
+    }
+
+    const completeTask = item =>{
+
+        dispatch({type:'COMPLETE_TASK', payload:item});
+        console.log(item);
     }
 
     const clearCompleted = event =>{
@@ -43,8 +49,9 @@ const TodoForm = () =>{
         </form>
         <div>
             {state.todos.map(todo=>{
+                console.log(todo)
                 return(
-                <div key={todo.id} onClick ={() => dispatch({type:'COMPLETE_TASK'})}
+                <div key={todo.id} onClick ={() => completeTask(todo.id)}
                     className={`task${todo.completed ? 'completed' : ''}`}>
                         <p>{todo.item}</p>
                 </div>
